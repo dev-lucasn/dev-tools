@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice-name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microservice-name
+  template:
+    metadata:
+      labels:
+        app: microservice-name
+    spec:
+      containers:
+        - name: microservice-name
+          image: yourregistry/microservice-name:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Production"
